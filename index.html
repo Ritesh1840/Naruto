@@ -32,7 +32,7 @@
     #n { width: 1600px; }
     #s { width: 2400px; }
     
-    /* New styles for the start screen */
+    /* Styles for the start screen */
     #start-overlay {
       position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(0, 0, 0, 0.9); z-index: 100;
@@ -50,8 +50,8 @@
   <canvas id="out"></canvas>
   <div class="darkness"></div>
 
-  <video id="n" class="fx" src="assets/naruto.mp4" loop playsinline></video>
-  <video id="s" class="fx" src="assets/sasuke.mp4" loop playsinline></video>
+  <video id="n" class="fx" src="naruto.mp4" loop playsinline></video>
+  <video id="s" class="fx" src="sasuke.mp4" loop playsinline></video>
 
   <script>
     const vElement = document.getElementById('v_src');
@@ -156,13 +156,13 @@
         if (!fL) {
             pwr[0] = Math.max(0, pwr[0] - 0.15);
             if (pwr[0] > 0.01) { n.style.display = 'block'; n.style.opacity = pwr[0]; }
-            else { n.pause(); } // Pause when hidden to prevent overlapping audio
+            else { n.pause(); } 
             wasOpen[0] = false;
         }
         if (!fR) {
             pwr[1] = Math.max(0, pwr[1] - 0.15);
             if (pwr[1] > 0.01) { s.style.display = 'block'; s.style.opacity = pwr[1]; }
-            else { s.pause(); } // Pause when hidden to prevent overlapping audio
+            else { s.pause(); } 
             wasOpen[1] = false;
         }
         ctx.restore();
@@ -185,7 +185,6 @@
         onFrame: async () => { await h.send({ image: vElement }); },
         width: 1280, height: 720
     });
-    // Camera start is now triggered by the overlay click event!
   </script>
 </body>
 </html>
